@@ -49,7 +49,7 @@ It features a multi-page interface inspired by modern financial dashboards, buil
 
 ## 🌐 Demo Website
 
-Check out the live demo of the Financial Portfolio Dashboard here: [Somg FinDash Live Demo](https://your-portfolio-website-link.com)
+Check out the live demo of the Financial Portfolio Dashboard here: [Somg FinDash Live Demo](https://financial-portfolio-dashboard.onrender.com/)
 
 Explore the features and experience the interactive UI firsthand!
 
