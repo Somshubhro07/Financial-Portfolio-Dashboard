@@ -1,17 +1,15 @@
-// src/pages/MutualFundsPortfolioPage.jsx
+/* eslint-disable no-unused-vars */
 import React from 'react';
 import { motion } from 'framer-motion';
 import DashboardCard from '../components/dashboard/DashboardCard';
 import AllocationPieChart from '../components/dashboard/AllocationPieChart';
-import { mockPortfolio, mockAllocationData } from '../data/mockDashboardData'; // Import data
+import { mockPortfolio, mockMfAllocationData, mockAllocationData } from '../data/mockDashboardData';
 
-// Filter data for MFs
 const mfPortfolio = mockPortfolio.filter(item => item.type === 'mf');
 const mfAllocation = mockAllocationData.filter(item =>
     mfPortfolio.some(mf => mf.name === item.name)
 );
 
-// Simple component to display MF card
 const MFCard = ({ item }) => (
     <motion.div
         whileHover={{y:-5}}
@@ -42,15 +40,13 @@ function MutualFundsPortfolioPage() {
             className="p-6"
         >
             <h1 className="text-3xl font-bold mb-6">Mutual Funds Portfolio</h1>
-             <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
                 <div className="lg:col-span-2 grid grid-cols-1 md:grid-cols-2 gap-4">
-                    {/* Display MFs as cards */}
                     {mfPortfolio.map(item => <MFCard key={item.id} item={item} />)}
                 </div>
                 <div>
                     <DashboardCard title="Mutual Fund Allocation">
-                         {/* Pass filtered data to AllocationPieChart */}
-                        <AllocationPieChart data={mfAllocation} /> {/* Modify Pie Chart */}
+                        <AllocationPieChart data={mockMfAllocationData} />
                     </DashboardCard>
                 </div>
             </div>

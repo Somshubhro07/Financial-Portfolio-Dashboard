@@ -1,4 +1,4 @@
-// src/components/dashboard/PortfolioTable.jsx
+/* eslint-disable no-unused-vars */
 import React from 'react';
 import { motion } from 'framer-motion';
 import PortfolioItem from './PortfolioItem';
@@ -11,7 +11,7 @@ const containerVariants = {
 
 function PortfolioTable() {
     return (
-        <div className="overflow-x-auto"> {/* Make table scrollable horizontally if needed */}
+        <div className="overflow-x-auto"> 
             <table className="min-w-full divide-y divide-border-color/30">
                 <thead>
                     <tr>

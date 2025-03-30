@@ -1,12 +1,10 @@
-// src/components/dashboard/IndicesTable.jsx
+/* eslint-disable no-unused-vars */
 import React from 'react';
 import { motion } from 'framer-motion';
-import { isChangePositive } from '../../data/mockDashboardData'; // Import helper
+import { isChangePositive } from '../../data/mockDashboardData';
 
-const tableContainerVariants = { /* ... from previous IndianIndicesPage ... */ };
-const tableRowVariants = { /* ... from previous IndianIndicesPage ... */ };
-
-// Accepts data array as prop
+const tableContainerVariants = { };
+const tableRowVariants = { };
 function IndicesTable({ data = [] }) {
     if (!data || data.length === 0) {
         return <p className="text-text-secondary text-center py-10">No index data available.</p>;

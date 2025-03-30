@@ -1,4 +1,4 @@
-// src/components/dashboard/NewsFeed.jsx
+/* eslint-disable no-unused-vars */
 import React from 'react';
 import { motion } from 'framer-motion';
 import { mockNews } from '../../data/mockDashboardData';
@@ -19,7 +19,7 @@ function NewsFeed() {
             variants={listVariants}
             initial="hidden"
             animate="visible"
-            className="space-y-3 max-h-60 overflow-y-auto pr-2 scrollbar-thin scrollbar-thumb-border-color scrollbar-track-content-bg" // Max height and scroll
+            className="space-y-3 max-h-60 overflow-y-auto pr-2 scrollbar-thin scrollbar-thumb-border-color scrollbar-track-content-bg" 
         >
             {mockNews.map(item => (
                 <motion.div
@@ -37,6 +37,4 @@ function NewsFeed() {
         </motion.div>
     );
 }
-// Need to install and configure scrollbar plugin for styling: npm install -D tailwind-scrollbar
-// Add to tailwind.config.js plugins: require('tailwind-scrollbar'),
 export default NewsFeed;

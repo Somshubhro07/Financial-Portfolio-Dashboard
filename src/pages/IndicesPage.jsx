@@ -1,8 +1,8 @@
-// src/pages/IndicesPage.jsx
+/* eslint-disable no-unused-vars */
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { mockIndianIndicesTableData, mockGlobalIndicesTableData } from '../data/mockDashboardData'; // Import both data sets
-import IndicesTable from '../components/dashboard/IndicesTable'; // Import the reusable table
+import { mockIndianIndicesTableData, mockGlobalIndicesTableData } from '../data/mockDashboardData'; 
+import IndicesTable from '../components/dashboard/IndicesTable'; 
 
 const tabContentVariants = {
   initial: { opacity: 0, y: 10 },
@@ -12,7 +12,7 @@ const tabContentVariants = {
 
 
 function IndicesPage() {
-    const [activeTab, setActiveTab] = useState('indian'); // 'indian' or 'global'
+    const [activeTab, setActiveTab] = useState('indian'); 
 
     return (
         <motion.div
@@ -25,8 +25,6 @@ function IndicesPage() {
             >
                 Market Indices
             </motion.h1>
-
-            {/* Tab Buttons */}
             <div className="flex space-x-1 mb-5 border-b border-border-color">
                 <button
                     onClick={() => setActiveTab('indian')}
@@ -49,16 +47,14 @@ function IndicesPage() {
                     Global Indices
                 </button>
             </div>
-
-            {/* Conditional Table Rendering with Animation */}
              <motion.div
                 initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.1 }}
-                className="bg-content-bg border border-border-color rounded-lg shadow-lg overflow-hidden" // Card background for the table area
+                className="bg-content-bg border border-border-color rounded-lg shadow-lg overflow-hidden"
             >
-                <AnimatePresence mode="wait"> {/* Ensures smooth transition between tables */}
+                <AnimatePresence mode="wait"> 
                     {activeTab === 'indian' && (
                         <motion.div
-                            key="indian-table" // Key is important for AnimatePresence
+                            key="indian-table" 
                             variants={tabContentVariants}
                             initial="initial"
                             animate="animate"

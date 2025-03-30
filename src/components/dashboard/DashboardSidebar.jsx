@@ -1,79 +1,95 @@
 /* eslint-disable no-unused-vars */
-// src/components/dashboard/DashboardSidebar.jsx
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { motion } from 'framer-motion';
-// Import relevant icons
+import { HiX } from "react-icons/hi";
 import { RxDashboard } from "react-icons/rx";
 import { HiOutlineChartPie, HiOutlineNewspaper } from "react-icons/hi";
 import { FaChartLine, FaMoneyBillWave } from "react-icons/fa";
+import somgLogo from '../../assets/images/logo.png';
 
 const navLinks = [
     { name: 'Dashboard', path: '/', icon: RxDashboard },
     { name: 'Stocks', path: '/stocks', icon: FaChartLine },
     { name: 'Mutual Funds', path: '/mutual-funds', icon: HiOutlineChartPie },
     { name: 'News', path: '/news', icon: HiOutlineNewspaper },
-    // Add links to your first project if desired
-    { name: 'Account UI', path: '/account-ui-project', icon: FaMoneyBillWave }, // Example link to other project
+    { name: 'Account UI', path: '/account-ui-project', icon: FaMoneyBillWave },
 ];
 
 const sidebarVariants = {
     hidden: { x: '-100%' },
-    visible: { x: 0, transition: { duration: 0.4, ease: 'easeInOut' } }
+    visible: { x: 0 }
 };
 
-const navContainerVariants = { /* ... from previous sidebar ... */ };
-const navItemVariants = { /* ... from previous sidebar ... */ };
+const navContainerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+        opacity: 1,
+        transition: {
+            staggerChildren: 0.08,
+            delayChildren: 0.3,
+        }
+    }
+};
 
-function DashboardSidebar() {
+const navItemVariants = {
+    hidden: { opacity: 0, x: -15 },
+    visible: { opacity: 1, x: 0 }
+};
+
+
+function DashboardSidebar({ isOpen, setIsOpen }) {
     const location = useLocation();
+
+    const handleLinkClick = () => {
+        if (window.innerWidth < 1024) {
+             setIsOpen(false);
+        }
+    }
 
     return (
         <motion.div
-            // variants={sidebarVariants} // Optional: slide in whole sidebar
-            // initial="hidden"
-            // animate="visible"
-            className="w-64 bg-sidebar-bg h-screen p-5 flex flex-col fixed top-0 left-0 border-r border-border-color z-10" // Fixed position sidebar
+            className={`w-64 bg-sidebar-bg h-screen p-4 flex flex-col fixed top-0 left-0 border-r border-border-color z-30 
+                       transform transition-transform duration-300 ease-in-out 
+                       ${isOpen ? 'translate-x-0' : '-translate-x-full'} 
+                       lg:translate-x-0`} 
         >
-            {/* Logo/Title */}
-            <motion.div
-                initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 }}
-                className="mb-10 text-center"
-             >
-                 <h1 className="text-2xl font-bold text-text-primary">FinDash</h1>
-                 <p className="text-xs text-secondary">Portfolio Tracker</p>
-            </motion.div>
+            <div className="h-16 flex items-center justify-between mb-8 px-2 shrink-0"> 
+                 <img
+                    src={somgLogo}
+                    alt="Somg Logo"
+                    className="h-8 w-auto"
+                 />
+                 <button
+                     onClick={() => setIsOpen(false)}
+                     className="text-text-secondary hover:text-text-primary lg:hidden" 
+                     aria-label="Close sidebar"
+                 >
+                     <HiX size={24}/>
+                 </button>
+            </div>
 
-            {/* Navigation */}
-            <motion.nav
-                 variants={navContainerVariants} initial="hidden" animate="visible"
-                 className="flex flex-col space-y-3 flex-grow"
-            >
-                {navLinks.map((link) => {
+            <nav className="flex flex-col space-y-2 flex-grow overflow-y-auto"> 
+               {navLinks.map((link) => {
                     const isActive = location.pathname === link.path;
                     const Icon = link.icon;
                     return (
-                        <motion.div key={link.name} variants={navItemVariants}>
-                            <Link
-                                to={link.path}
-                                className={`flex items-center space-x-3 px-3 py-2.5 rounded-md text-sm font-medium transition-all duration-150 ease-in-out
-                                    ${isActive
-                                        ? 'bg-primary/10 text-primary shadow-glow-primary' // Active state with glow
-                                        : 'text-text-secondary hover:text-text-primary hover:bg-content-bg'
-                                    }`}
-                            >
-                                <Icon size={18} />
-                                <span>{link.name}</span>
-                            </Link>
-                        </motion.div>
+                        <div key={link.name}>
+                             <Link
+                                 to={link.path}
+                                 onClick={handleLinkClick}
+                             >
+                                <div
+                                     className={`flex items-center space-x-3 px-3 py-2.5 rounded-md text-sm font-medium transition-all duration-150 ease-in-out group ${isActive ? 'bg-primary/10 text-primary shadow-glow-primary' : 'text-text-secondary hover:text-text-primary hover:bg-content-bg/50'}`}
+                                >
+                                     <Icon size={18} className={`transition-colors shrink-0 ${isActive ? 'text-primary' : 'text-text-secondary group-hover:text-text-primary'}`} />
+                                     <span className="truncate">{link.name}</span> 
+                                 </div>
+                             </Link>
+                        </div>
                     );
                 })}
-            </motion.nav>
-
-             {/* Footer/User Section (Optional) */}
-            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.5 }}>
-                {/* Add user info or settings link here */}
-            </motion.div>
+            </nav>
         </motion.div>
     );
 }

@@ -1,7 +1,7 @@
-// src/components/dashboard/PortfolioItem.jsx
+/* eslint-disable no-unused-vars */
 import React from 'react';
 import { motion } from 'framer-motion';
-import { FaExternalLinkAlt } from 'react-icons/fa'; // Example icon
+import { FaExternalLinkAlt } from 'react-icons/fa'; 
 
 const itemVariants = {
     hidden: { opacity: 0 },
@@ -17,7 +17,7 @@ function PortfolioItem({ item }) {
         currentValue = (item.quantity ?? 0) * (item.currentPrice ?? 0);
         profitLoss = currentValue - investment;
         profitLossPercent = investment === 0 ? 0 : (profitLoss / investment) * 100;
-    } else { // Mutual Fund
+    } else { 
         investment = item.invested ?? 0;
         currentValue = item.currentValue ?? 0;
         profitLoss = currentValue - investment;
@@ -41,7 +41,7 @@ function PortfolioItem({ item }) {
                 ₹{profitLoss.toFixed(2)} ({profitLossPercent.toFixed(1)}%)
             </td>
             <td className="px-4 py-3 text-sm text-center">
-                 <button className="text-text-secondary hover:text-primary transition-colors"><FaExternalLinkAlt size={12}/></button> {/* Example action */}
+                 <button className="text-text-secondary hover:text-primary transition-colors"><FaExternalLinkAlt size={12}/></button>
             </td>
         </motion.tr>
     );

@@ -1,4 +1,4 @@
-// src/components/dashboard/IndexCarousel.jsx
+/* eslint-disable no-unused-vars */
 import React from 'react';
 import { motion } from 'framer-motion';
 import IndexDisplay from './IndexDisplay';
@@ -11,15 +11,13 @@ const containerVariants = {
 
 function IndexCarousel() {
     return (
-        // Container with scrollbar hidden (on browsers that support it) & snap behavior
         <motion.div
             variants={containerVariants}
             initial="hidden"
             animate="visible"
-            className="flex space-x-4 overflow-x-auto pb-3 snap-x snap-mandatory scrollbar-hide" // Key classes: overflow-x-auto, snap-x, snap-mandatory
+            className="flex space-x-4 overflow-x-auto pb-3 snap-x snap-mandatory scrollbar-hide" 
         >
             {mockIndianIndices.map((index) => (
-                // IndexDisplay already has itemVariants if needed, ensure key is unique
                 <IndexDisplay
                     key={index.name}
                     name={index.name}

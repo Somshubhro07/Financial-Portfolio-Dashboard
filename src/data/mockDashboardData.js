@@ -20,19 +20,7 @@ export const mockVolumeData = [
 
 // Example Index Data
 
-// Example Portfolio Holdings
-export const mockPortfolio = [
-    // Stocks
-    { id: 's1', type: 'stock', name: 'IRFC', quantity: 100, avgPrice: 150.50, currentPrice: 175.20 },
-    { id: 's2', type: 'stock', name: 'SBI', quantity: 50, avgPrice: 750.80, currentPrice: 840.50 },
-    { id: 's3', type: 'stock', name: 'Reliance', quantity: 20, avgPrice: 2800.00, currentPrice: 2950.75 },
-    { id: 's4', type: 'etf', name: 'NIFTY BEES', quantity: 200, avgPrice: 230.00, currentPrice: 265.10 },
-    { id: 's5', type: 'stock', name: 'NHPC', quantity: 150, avgPrice: 95.20, currentPrice: 115.00 },
-    { id: 's6', type: 'stock', name: 'IOC', quantity: 80, avgPrice: 160.70, currentPrice: 168.30 },
-    // Mutual Funds
-    { id: 'mf1', type: 'mf', name: 'Quant Small Cap Fund', invested: 50000, currentValue: 58750.00 },
-    { id: 'mf2', type: 'mf', name: 'Motilal Oswal Midcap Fund', invested: 75000, currentValue: 81200.50 },
-];
+
 
 // Example News Headlines
 export const mockNews = [
@@ -115,3 +103,66 @@ export const isChangePositive = (changeStr) => {
     if (!changeStr) return true; // Default or handle as needed
     return !changeStr.startsWith('-');
 };
+
+export const mockMostTraded = [
+    { name: 'Aster DM Health', price: 483.50, change: '+30.15 (+6.65%)', positive: true, logo: '?' }, // Add simple logos/icons later?
+    { name: 'Eternal', price: 201.70, change: '-4.58 (-2.22%)', positive: false, logo: '?' },
+    { name: 'Capri Global', price: 170.21, change: '+5.31 (+3.22%)', positive: true, logo: '?' },
+    { name: 'BSE', price: 5479.80, change: '+796.45 (+16.98%)', positive: true, logo: '?' },
+];
+
+export const mockProductsTools = [
+    { name: 'Terminal', icon: 'terminal' }, // Map these keys to actual icons later
+    { name: 'Events', icon: 'calendar' },
+    { name: 'Intraday', icon: 'chart' },
+    { name: 'IPO', icon: 'rocket' },
+    { name: 'Screener', icon: 'filter' },
+];
+
+export const mockTopGainers = [
+    { name: 'Tata Consumer', price: 1001.90, change: '+28.35 (+2.91%)', positive: true, logo: '?' },
+    { name: 'Kotak Mahindra', price: 2171.20, change: '+42.55 (+2.00%)', positive: true, logo: '?' },
+    { name: 'Britannia Ind.', price: 4936.90, change: '+95.70 (+1.98%)', positive: true, logo: '?' },
+    { name: 'Apollo Hospitals', price: 6616.20, change: '+124.15 (+1.91%)', positive: true, logo: '?' },
+];
+
+export const mockEtfsBySomg = [ // Renamed from Groww
+    { name: 'Somg Nifty India Defence ETF', price: 63.90, change: '+0.65 (+1.03%)', positive: true },
+    { name: 'Somg Nifty India Railways PSU ETF', price: 34.47, change: '-0.11 (-0.32%)', positive: false },
+    { name: 'Somg Gold ETF', price: 68.34, change: '+0.93 (+1.06%)', positive: true }, // Used 68.34 based on image calculation
+    { name: 'Somg Nifty 200 ETF', price: 10.45, change: '-0.01 (-0.10%)', positive: false },
+];
+
+export const mockPortfolio = [
+    { id: 's1', type: 'stock', name: 'IRFC', quantity: 100, avgPrice: 150.50, currentPrice: 175.20 },
+    { id: 's2', type: 'stock', name: 'SBI', quantity: 50, avgPrice: 750.80, currentPrice: 840.50 },
+    { id: 's3', type: 'stock', name: 'Reliance', quantity: 20, avgPrice: 2800.00, currentPrice: 2950.75 },
+    { id: 's4', type: 'etf', name: 'NIFTY BEES', quantity: 200, avgPrice: 230.00, currentPrice: 265.10 },
+    { id: 's5', type: 'stock', name: 'NHPC', quantity: 150, avgPrice: 95.20, currentPrice: 115.00 },
+    { id: 's6', type: 'stock', name: 'IOC', quantity: 80, avgPrice: 160.70, currentPrice: 168.30 },
+    { id: 'mf1', type: 'mf', name: 'Quant Small Cap', invested: 50000, currentValue: 58750.00 },
+    { id: 'mf2', type: 'mf', name: 'Motilal Midcap', invested: 75000, currentValue: 81200.50 },
+];
+
+export const mockStockAllocationData = mockPortfolio
+    .filter(item => item.type === 'stock' || item.type === 'etf')
+    .map(item => ({
+        name: item.name,
+        // Calculate current value for stocks/etfs
+        value: (Number(item?.quantity) || 0) * (Number(item?.currentPrice) || 0)
+    }))
+    .filter(item => item.value > 0); // Optional: filter out zero values
+
+// Calculate Mutual Fund Allocation
+export const mockMfAllocationData = mockPortfolio
+    .filter(item => item.type === 'mf')
+    .map(item => ({
+        name: item.name.replace(' Fund', ''), // Shorten name for chart label
+        value: (Number(item?.currentValue) || 0)
+    }))
+    .filter(item => item.value > 0);
+
+// Remove the old combined mockAllocationData export if it existed
+// export const mockAllocationData = [ ... ]; // DELETE or comment out this line
+
+// --- Keep helper functions and potentially candlestick data ---
