@@ -47,24 +47,12 @@ It features a multi-page interface inspired by modern financial dashboards, buil
 
 ---
 
-## 📸 Screenshots / Demo
+## 🌐 Demo Website
 
-*(Replace these placeholders with actual screenshots/GIFs of your running application! This is crucial!)*
+Check out the live demo of the Financial Portfolio Dashboard here: [Somg FinDash Live Demo](https://your-portfolio-website-link.com)
 
-**Main Dashboard:**
-`![Dashboard Screenshot](/[link-to-dashboard-screenshot.png])`
+Explore the features and experience the interactive UI firsthand!
 
-**Stocks Portfolio Page:**
-`![Stocks Page Screenshot](/[link-to-stocks-screenshot.png])`
-
-**Mutual Funds Portfolio Page:**
-`![Mutual Funds Screenshot](/[link-to-mf-screenshot.png])`
-
-**Indices Page:**
-`![Indices Page Screenshot](/[link-to-indices-screenshot.png])`
-
-**(Strongly Recommended: Add a GIF showing navigation and animations!)**
-`![App Demo GIF](/[link-to-demo.gif])`
 
 ---
 

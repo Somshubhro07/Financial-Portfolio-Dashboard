@@ -43,8 +43,4 @@ export default {
       }
     },
   },
-  plugins: [
-    import('@tailwindcss/forms'),
-    import('tailwind-scrollbar-hide') 
-],
 }
